@@ -1,0 +1,4 @@
+check filesystem var-cifs-mdappr path /var/cifs/mdappr
+        start program = "/bin/mount /var/cifs/mdappr" timeout 5 seconds
+        stop program = "/bin/umount /var/cifs/mdappr" with timeout 5 seconds
+        if does not exist for 3 cycles then restart

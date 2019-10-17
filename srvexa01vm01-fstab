@@ -1,0 +1,31 @@
+LABEL=DBSYS             /                       ext4    defaults        1 1
+LABEL=BOOT              /boot                   ext4    defaults,nodev        1 1
+tmpfs                   /dev/shm                tmpfs   defaults,size=705053m 0
+devpts                  /dev/pts                devpts  gid=5,mode=620  0 0
+sysfs                   /sys                    sysfs   defaults        0 0
+proc                    /proc                   proc    defaults        0 0
+LABEL=SWAP              swap                    swap    defaults        0 0
+LABEL=DBORA		/u01	ext4	defaults	1 1
+
+/dev/xvdb		/u01/app/18.1.0.0/grid	ext4	defaults	1 1
+/dev/xvdh           	/u02    ext4    defaults        1 1
+
+//rj2k12dfs01.globosat.net.br/acervo_DEV/ /var/cifs/acervo cifs _netdev,noauto,nofail,noexec,nosuid,nodev,soft,uid=oracle,gid=oinstall,file_mode=0664,credentials=/etc/credentials/oracle_datasul_hom 0 0
+//rj2k12dfs01.globosat.net.br/dfsoracle/ /atividades cifs _netdev,noauto,nofail,noexec,nosuid,nodev,soft,uid=oracle,gid=oinstall,file_mode=0664,credentials=/etc/credentials/oraclefs 0 0
+//rj2k12dfs01.globosat.net.br/h_ecad/ /var/cifs/ECAD cifs _netdev,noauto,nofail,noexec,nosuid,nodev,soft,uid=oracle,gid=oinstall,file_mode=0664,credentials=/etc/credentials/oracle_ibms_hom 0 0
+//rj2k12dfs01.globosat.net.br/processos_DEV/ /var/cifs/processos cifs _netdev,noauto,nofail,noexec,nosuid,nodev,soft,uid=oracle,gid=oinstall,file_mode=0664,credentials=/etc/credentials/oracle_datasul_hom 0 0
+//rj2k8crm01.globosat.net.br/DATASUL_DEV/ /var/cifs/PROD_INTEGRACAO_CRM cifs _netdev,noauto,nofail,noexec,nosuid,nodev,soft,uid=oracle,gid=oinstall,file_mode=0664,credentials=/etc/credentials/oracle_datasul_hom 0 0
+//rj2k8dtsul01.globosat.net.br/DATASUL/IBMS/MOEDAS /var/cifs/INTEGRACAO_IBMS_MOEDAS cifs _netdev,noauto,nofail,noexec,nosuid,nodev,soft,uid=oracle,gid=oinstall,file_mode=0664,credentials=/etc/credentials/oracle_ibms_hom 0 0
+//rj2k12dfs01.globosat.net.br/acervo /var/cifs/acervo cifs _netdev,noauto,nofail,noexec,nosuid,nodev,soft,uid=oracle,gid=oinstall,file_mode=0664,credentials=/etc/credentials/oraclefs 0 0
+//rj2k12dfs01.globosat.net.br/processos /var/cifs/processos cifs _netdev,noauto,nofail,noexec,nosuid,nodev,soft,uid=oracle,gid=oinstall,file_mode=0664,credentials=/etc/credentials/oraclefs 0 0
+//rj2k12dfs01.globosat.net.br/Sistemas_Usuarios/Prod/Mastersaf/DCTF /var/cifs/DCTF cifs _netdev,noauto,nofail,noexec,nosuid,nodev,soft,uid=oracle,gid=oinstall,file_mode=0664,credentials=/etc/credentials/orcl_mastersaf_dctf 0 0
+//rj2k12dfs01.globosat.net.br/Sistemas_Usuarios/Prod/Mastersaf/MSAFGEMT /var/cifs/MSAFGEMT cifs _netdev,noauto,nofail,noexec,nosuid,nodev,soft,uid=oracle,gid=oinstall,file_mode=0664,credentials=/etc/credentials/oracle_onesource_pro 0 0
+//rj2k12dfs01.globosat.net.br/Sistemas_Usuarios/Prod/Mastersaf/msafimp /var/cifs/msafimp cifs _netdev,noauto,nofail,noexec,nosuid,nodev,soft,uid=oracle,gid=oinstall,file_mode=0664,credentials=/etc/credentials/oracle_onesource_pro 0 0
+
+//rj2k12dfs01.globosat.net.br/sistemas_usuarios/prod/migracao_rm /var/cifs/migracao_rm cifs _netdev,noauto,nofail,noexec,nosuid,nodev,soft,uid=oracle,gid=oinstall,file_mode=0664,credentials=/etc/credentials/oraclefs 0 0
+//rj2k12dfs01.globosat.net.br/custoabc /var/cifs/custoabc cifs _netdev,noauto,nofail,noexec,nosuid,nodev,soft,uid=oracle,gid=oinstall,file_mode=0664,credentials=/etc/credentials/oraclefs 0 0
+//rj2k12dfs01.globosat.net.br/exibicao /var/cifs/exibicao cifs _netdev,noauto,nofail,noexec,nosuid,nodev,soft,uid=oracle,gid=oinstall,file_mode=0664,credentials=/etc/credentials/oraclefs 0 0
+
+//rj2k12dfs01.globosat.net.br/acervo/ /var/cifs/acervo cifs _netdev,noauto,nofail,noexec,nosuid,nodev,soft,uid=oracle,gid=oinstall,file_mode=0664,credentials=/etc/credentials/oracle_datasul 0 0
+//rj2k12dfs01.globosat.net.br/processos/ /var/cifs/processos cifs _netdev,noauto,nofail,noexec,nosuid,nodev,soft,uid=oracle,gid=oinstall,file_mode=0664,credentials=/etc/credentials/oracle_datasul 0 0
+
