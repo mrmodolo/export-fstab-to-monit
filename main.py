@@ -35,15 +35,13 @@ def fs_spec_fs_file_from_fstab(fstab_file):
         para cada linha do arquivo fstab
         cujo campo fs_vfstype seja do tipo cifs
     '''
-    fs_spec_fs_file_map = {}
     with open(fstab_file, 'r') as fstab:
         for line in fstab:
             result = re.match(FSTAB_LINE, line)
             if result and (result.group('fs_vfstype') == "cifs"):
                 fs_spec = result.group('fs_spec')
                 fs_file = result.group('fs_file')
-                fs_spec_fs_file_map[fs_spec] = fs_file
-    return fs_spec_fs_file_map
+                yield {fs_spec: fs_file}
 
 
 def fs_file_to_monit_rootfs(fs_file):
@@ -65,8 +63,11 @@ def build_template(fs_spec_fs_file_map):
 
 def main():
     '''Resultados'''
-    fs_spec_fs_file_map = fs_spec_fs_file_from_fstab('./srvexa01vm01-fstab')
-    build_template(fs_spec_fs_file_map)
+    # fs_spec_fs_file_map = fs_spec_fs_file_from_fstab('./srvexa01vm01-fstab')
+    for sp in fs_spec_fs_file_from_fstab('./srvexa01vm01-fstab'):
+        print(sp)
+
+    # build_template(fs_spec_fs_file_map)
 
 
 if __name__ in "__main__":
