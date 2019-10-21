@@ -1,0 +1,20 @@
+#=============================================================================
+# dark_powered.toml --- dark powered configuration example for SpaceVim
+# Copyright (c) 2016-2017 Wang Shidong & Contributors
+# Author: Wang Shidong < wsdjeg at 163.com >
+# URL: https://spacevim.org
+# License: GPLv3
+#=============================================================================
+
+# All SpaceVim option below [option] section
+[options]
+  force_global_config = true
+
+[[layers]]
+  name = "lang#python"
+  python_file_head = [
+      '#!/usr/bin/env python',
+      '# -*- coding: utf-8 -*-',
+      '',
+      ''
+  ]
