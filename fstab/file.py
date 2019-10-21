@@ -19,15 +19,6 @@ An example log is on the machine srvexa02vm01
 import re
 
 
-MONIT_TEMPLATE = '''
-check filesystem $rootfs path $fs_file
-        start program = "/bin/mount $fs_spec" timeout 5 seconds
-        stop program = "/bin/umount $fs_spec" with timeout 5 seconds
-        if does not exist for 3 cycles then restart
-        if does not exist for 3 cycles then exec /usr/local/bin/log_monit_event
-'''
-
-
 '''
 Module Constants
 '''
@@ -44,21 +35,21 @@ A valid line in the fstab file can start with zero or more spaces and tabs
 The six fields are required and must be separated by at least one space or tab
 At the end a line can have spaces, tabs and comments
 '''
-FSTAB_LINE = re.compile(r'\s*(?P<fs_spec>\S+)'
-                        r'\s+(?P<fs_file>\S+)'
-                        r'\s+(?P<fs_vfstype>\S+)'
-                        r'\s+(?P<fs_mntops>\S+)'
-                        r'\s+(?P<fs_freq>\S+)'
-                        r'\s+(?P<fs_passno>\S+)[\s#]*')
+_FSTAB_LINE = re.compile(r'\s*(?P<fs_spec>\S+)'
+                         r'\s+(?P<fs_file>\S+)'
+                         r'\s+(?P<fs_vfstype>\S+)'
+                         r'\s+(?P<fs_mntops>\S+)'
+                         r'\s+(?P<fs_freq>\S+)'
+                         r'\s+(?P<fs_passno>\S+)[\s#]*')
 
 
-def open_fstab(filename):
+def get_lines(filename):
     '''
     Parses the fstab file and returns an iterator
     '''
     with open(filename, 'r') as fstab:
         for line in fstab:
-            result = re.match(FSTAB_LINE, line)
+            result = re.match(_FSTAB_LINE, line)
             if result:
                 fs_spec = result.group(FS_SPEC)
                 fs_file = result.group(FS_FILE)
@@ -74,42 +65,10 @@ def open_fstab(filename):
                        FS_PASSNO: fs_passno}
 
 
-def filter_fstab(fstab, field, value):
+def apply_filter(fstab, field, value):
     '''
     Field-based filtering
     '''
     for line in fstab:
         if line[field] == value:
             yield line
-
-
-def ext4_test():
-    '''Test ext4'''
-    fstab = open_fstab('./srvexa01vm01-fstab')
-
-    filter_ext4 = filter_fstab(fstab, FS_VFSTYPE, 'ext4')
-    print('Exibindo ext4')
-    for mount in filter_ext4:
-        print(mount)
-
-
-def cifs_test():
-    '''Test cifs'''
-    fstab = open_fstab('./srvexa01vm01-fstab')
-
-    filter_cifs = filter_fstab(fstab, FS_VFSTYPE, 'cifs')
-    print('Exibindo cifs')
-    for mount in filter_cifs:
-        print(mount)
-
-
-def main():
-    '''
-    Showl all tests!
-    '''
-    ext4_test()
-    cifs_test()
-
-
-if __name__ in "__main__":
-    main()
